@@ -4,6 +4,9 @@ class Owner < ApplicationRecord
     # -----------------------------
     # create a callback that will strip non-digits before saving to db
     before_save :reformat_phone
+    
+    # create a callback that will capitalize the last name of an owner before saving it to db
+    before_save :capitalize_last_name
   
     # Relationships
     # -----------------------------
@@ -100,6 +103,17 @@ class Owner < ApplicationRecord
       self.phone = phone       # reset self.phone to new string
     end
 
+    def capitalize_last_name
+      # "destructive" methods are methods that modify the object they are called on. 
+      # These methods typically end with an exclamation mark (!) to indicate
+      #  that they are potentially dangerous or non-idempotent, 
+      # meaning they can alter the original object irreversibly.
+      self.last_name.capitalize! #this is what we call a destructive method
+      # equivalent to
+      # self.last_name= self.last_name.capitalize
+    end
+
+
 end
 
 
@@ -116,49 +130,4 @@ end
 
 
 
-
-
-
-
-
-
-    # to be added when we create the controller 
-    # and define the destroy action
-
-        # before_destroy :cannot_destroy_owner
-    #  # convert destroy call to make the owner, and all his related pets inactive in the system
-    # # using the deactive_owner_user_and_pets private method
-    # after_rollback :make_owner_and_pets_inactive
-
-    # IN THE CONTROLLER:
-    # def destroy
-    #     ## We don't allow destroy (will deactivate instead)
-    #     if @owner.destroy
-    #       # irrelevant now...
-    #       # redirect_to owners_url, notice: "Successfully removed #{@owner.proper_name} from the PATS system."
-    #     else
-    #       # we still want this path with the base error message shown
-    #       @current_pets = @owner.pets.alphabetical.active.to_a
-    #       render action: 'show'
-    #     end
-    #     @owner.deactive_owner_user_and_pets
-    #     redirect_to owners_url, notice: "Successfully deactivated #{@owner.proper_name} along with associated user and pets."
-    #   end
-        
-    # # Callback handler to prevent owner deletions
-    # def cannot_destroy_owner
-    #   @destroyable=false
-    #   msg = "This owner cannot be deleted at this time. If this is a mistake, please alert the administrator."
-    #   errors.add(:base, msg)
-    #   throw(:abort) if errors.present?
-    # end
-  
-    # # Callback handler to convert destroy call to make the owner, and all his related pets inactive in the system
-    # def make_owner_and_pets_inactive
-    #   return true unless @destroyable == false
-    #      self.pets.each{|pet| pet.make_inactive}
-    #      self.make_inactive
-    #      errors.add(:base, "#{self.proper_name} could not be deleted but was made inactive instead, along with related pets.")
-    # end
-  
 

@@ -129,7 +129,10 @@ class OwnerTest < ActiveSupport::TestCase
       assert_equal "4122688211", @mark.phone
     end
     
-
+    # test the callback is working 'capitalize_last_name'
+    should "shows that Alex's Last Name starts with a capital letter" do
+      assert_equal "Heimann", @alex.last_name
+    end
     
   end
 end

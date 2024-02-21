@@ -1,4 +1,4 @@
-67272_PATS_v3
+67272_miniPATS
 ==
 
 This is a basic Rails app that was built as a class demonstration in the Spring of 2024.  This version has basic models and some business logic already implemented.
