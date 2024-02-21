@@ -1,7 +1,7 @@
 67272_PATS_v3
 ==
 
-This is a basic Rails app that was built as a class demonstration in the Spring of 2023.  This version has basic models and some business logic already implemented.
+This is a basic Rails app that was built as a class demonstration in the Spring of 2024.  This version has basic models and some business logic already implemented.
 
 The class is Application Design & Development (67-272) and is for students in Information Systems at Carnegie Mellon University in Qatar. We share this code so that (a) it is readily accessible to students.
 
