@@ -46,7 +46,8 @@ gem 'jquery-rails', '4.3.1'
 gem 'jquery-ui-rails', '6.0.1'
 gem 'cancancan', '3.4.0'
 # TODO: when 7.0.0 is released, don't download from git
-gem 'validates_timeliness', git: "https://github.com/adzap/validates_timeliness"
+# gem 'validates_timeliness', git: "https://github.com/adzap/validates_timeliness"
+gem 'validates_timeliness', '~> 7.0.0.beta1'
 gem 'time_date_helpers', '0.0.2'
 gem 'carrierwave', '1.2.2'
 gem 'will_paginate', '3.3.1'
